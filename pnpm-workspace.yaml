@@ -1,0 +1,7 @@
+packages:
+  - cli
+  - api-client
+# pnpm bloquea los postinstall de terceros por defecto; esbuild (binario
+# nativo del toolchain) es el único que lo necesita.
+allowBuilds:
+  esbuild: true

@@ -1,0 +1,53 @@
+{
+  "name": "trazosuite",
+  "version": "0.1.0",
+  "description": "CLI de TrazoSuite: work items, proyectos y finanzas desde la terminal, para humanos y agentes de IA.",
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "bin": {
+    "trazosuite": "./dist/cli.mjs"
+  },
+  "main": "./dist/cli.mjs",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luis-Trinidad/trazosuite-cli.git"
+  },
+  "keywords": [
+    "trazosuite",
+    "cli",
+    "project-management",
+    "work-items",
+    "ai-agents"
+  ],
+  "scripts": {
+    "dev": "tsx src/cli.ts",
+    "build": "tsdown",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm build && pnpm test",
+    "check:types": "tsc --noEmit",
+    "check:lint": "oxlint src tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@trazo-suite/api-client": "workspace:*",
+    "@types/node": "^22.12.0",
+    "commander": "^14.0.0",
+    "oxlint": "^1.51.0",
+    "tsdown": "^0.16.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.8"
+  },
+  "module": "./dist/cli.mjs",
+  "types": "./dist/cli.d.mts",
+  "exports": {
+    ".": "./dist/cli.mjs",
+    "./package.json": "./package.json"
+  }
+}
