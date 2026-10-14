@@ -1,6 +1,6 @@
 {
   "name": "trazosuite",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "CLI de TrazoSuite: work items, proyectos y finanzas desde la terminal, para humanos y agentes de IA.",
   "license": "AGPL-3.0-only",
   "type": "module",
