@@ -6,6 +6,7 @@
  */
 
 import { realpath } from "node:fs/promises";
+import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import { Command } from "commander";
 import { registerCycleCommands } from "./commands/cycle.js";
@@ -24,13 +25,16 @@ import { registerWorkspaceCommands } from "./commands/workspace.js";
 import { applyStoredCredentials, loadCredentials, permissionsWarning } from "./credentials.js";
 import { fail } from "./errors.js";
 
+// La versión vive en package.json; así `--version` nunca se descuadra del paquete publicado.
+const { version } = createRequire(import.meta.url)("../package.json") as { version: string };
+
 /** Construye el programa completo (comandos, flags y salida) sin ejecutarlo. Exportado para poder parsear argv en memoria desde los tests. */
 export function buildProgram(): Command {
   const program = new Command();
   program
     .name("trazosuite")
     .description("CLI de TrazoSuite para agentes y humanos")
-    .version("0.1.0")
+    .version(version)
     .option("--text", "salida legible para humanos (por defecto la salida es JSON)")
     .exitOverride();
 
